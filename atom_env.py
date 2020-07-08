@@ -19,10 +19,10 @@ from PIL import ImageFont
 import subprocess
 
 def post2thinger(temp, hum, press, co2):
-    url = "https://api.thinger.io/v1/users/hiro88hyo/buckets/env_data/data" 
+    url = os.environ['THINGER_ENDPOINT'] 
     method = "POST"
     headers = {"Content-Type" : "application/json",
-    "Authorization" : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2NTc0NmYiLCJ1c3IiOiJoaXJvODhoeW8ifQ.SzAC9a0eNUSEdtMn1yXUL05XtQ5kWyK56-5aAJY06wI"
+    "Authorization" : "Bearer "+ os.environ['THINGER_AUTH_KEY']
     }
 
     data = {"temperature" : "{:-6.2f}".format(temp),
